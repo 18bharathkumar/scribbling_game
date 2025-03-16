@@ -16,7 +16,7 @@ const App = () => {
   const setSocket = useSetAtom(ws);
 
   useEffect(() => {
-    const socket = new WebSocket('ws://localhost:3000');
+    const socket = new WebSocket('ws://playscrubble.duckdns.org');
 
     socket.onopen = () => {
       console.log('WebSocket connection opened');
