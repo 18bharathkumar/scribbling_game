@@ -16,14 +16,14 @@ const App = () => {
   const setSocket = useSetAtom(ws);
 
   useEffect(() => {
-    const socket = new WebSocket('wss://playscrubble.duckdns.org');
+    const socket = new WebSocket('wss://playscrubble.duckdns.org/ws/');
 
     socket.onopen = () => {
       console.log('WebSocket connection opened');
     };
 
     socket.onclose = (event) => {
-      console.log('WebSocket connection closed:', event);
+      console.log('WebSocket closed:', event.code, event.reason);
       setIsInRoom(false);
     };
 
