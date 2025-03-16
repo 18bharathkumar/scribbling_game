@@ -12,7 +12,7 @@ export function handlecreate(
   secret: string,
   socket: WsSocket
 ) {
-  console.log("createing room");
+ 
   
   if (!user || !Number.isInteger(avatar) || !Number.isInteger(roomid) || !secret) {
     socket.send(JSON.stringify({
@@ -86,7 +86,7 @@ export function handlecreate(
     }
   }));
 
-  console.log(`New room created: ${roomid} by ${user}`);
+  
 }
 
 export function handleJoin(
@@ -171,9 +171,6 @@ export function handleJoin(
       drawingsMade: 0,
       lastActivity: new Date(),
     };
-    console.log("new user",newUser.name);
-    console.log(room.scoreBoard);
-    
     
   }
 
@@ -500,7 +497,7 @@ export function handleDrawing(roomid: number, user:string, data: any,socket:WsSo
       if (roomIndex !== -1) {
         rooms.splice(roomIndex, 1);
       }
-      console.log(`Room ${userRoom.room.id} deleted due to being empty`);
+    
     } else {
       // Notify remaining users about the disconnection
       broadcastToRoom(
@@ -548,11 +545,7 @@ function handleTimeOut(room: Room, drawIndex: number) {
       
       broadcastToRoom(room.id, { type: "time_out" });
 
-      console.log("current round ",room.currentRound);
-
-      console.log("drawer index",room.currentDrawerIndex);
       
-      console.log("time out");
       
       
       

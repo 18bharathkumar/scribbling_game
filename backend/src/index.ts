@@ -21,7 +21,7 @@ const wss = new WebSocket.Server({ server });
 
 // WebSocket Handler
 wss.on("connection", (socket: WsSocket) => {
-  console.log("New client connected");
+ 
 
   socket.on("message", (msg) => {
     const parsedMsg = JSON.parse(msg.toString());
@@ -32,7 +32,7 @@ wss.on("connection", (socket: WsSocket) => {
   });
 
   socket.on("close", () => {
-    console.log("Client disconnected");
+    
     cleanupDisconnectedUser(socket);
   });
 });
@@ -43,8 +43,7 @@ function handleMessage(type: string, payload: any, socket: WsSocket) {
 
   switch (type) {
     case "create":
-      console.log("createing the room");
-      console.log(payload);
+     
       
       handlecreate(user,avatar, roomid, secret, socket)
       break;
